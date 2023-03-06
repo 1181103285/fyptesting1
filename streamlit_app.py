@@ -14,7 +14,7 @@ cap = cv2.VideoCapture(0)
 (ret, frame) = cap.read()
 prediction = 'n.a.'
 
-#cap.release()
+cap.release()
 
 bytes_data = None
 img_file_buffer = st.camera_input('Snap a picture')
