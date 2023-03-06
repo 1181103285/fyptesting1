@@ -10,9 +10,9 @@ st.header('Color Recognition App 🌎')
 if st.button('Balloons?'):
     st.balloons()
 	
-#cap = cv2.VideoCapture(0)
-#(ret, frame) = cap.read()
-#prediction = 'n.a.'
+cap = cv2.VideoCapture(0)
+(ret, frame) = cap.read()
+prediction = 'n.a.'
 
 #cap.release()
 
