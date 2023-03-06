@@ -51,3 +51,4 @@ colour_prediction = knn.predict([[h,s,v]])
 
 st.text('hsv value: ' + HSVvalue)
 st.text('colour name: ' + colour_prediction[0])
+st.text('Suggested matching colour: ' + colour_prediction[0])
