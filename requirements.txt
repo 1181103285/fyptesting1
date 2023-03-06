@@ -2,3 +2,4 @@ streamlit
 google-cloud-firestore
 opencv-contrib-python-headless
 numpy
+scikit-learn
