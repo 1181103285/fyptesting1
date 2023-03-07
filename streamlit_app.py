@@ -23,7 +23,7 @@ if img_file_buffer is not None:
 	
 if bytes_data is None:
 	st.stop()
-	
+
 dataset = pd.read_csv('color_names.csv')
 dataset = dataset.drop(columns=['Hex (24 bit)', 'Red (8 bit)', 'Green (8 bit)', 'Blue (8 bit)'])
 #dataset
@@ -48,6 +48,14 @@ v = int(hsv[2]) / 255
 HSVvalue = str(h) + ',' + str(s) + ',' + str(v)
 
 colour_prediction = knn.predict([[h,s,v]])
+
+## for matching colours
+matching_colours_dataset = pd.read_csv('matching_colours.csv')
+matching_colours_list = matching_colours_dataset.values.tolist()
+st.text('testing: ' + matching_colours_list[0])
+matching_colours = ''
+#if ():
+#	matching_colours.append(matching_colours_dataset[0])
 
 st.text('hsv value: ' + HSVvalue)
 st.text('colour name: ' + colour_prediction[0])
