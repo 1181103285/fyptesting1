@@ -52,7 +52,9 @@ colour_prediction = knn.predict([[h,s,v]])
 ## for matching colours
 matching_colours_dataset = pd.read_csv('matching_colours.csv')
 matching_colours_list = matching_colours_dataset.to_numpy()
-st.text('testing: ' + matching_colours_list[0])
+st.text('testing: ' + matching_colours_list)
+
+#st.text('testing: ' + matching_colours_list[0])
 matching_colours = ''
 #if ():
 #	matching_colours.append(matching_colours_dataset[0])
