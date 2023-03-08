@@ -18,7 +18,7 @@ if st.button('Balloons?'):
 
 ## for matching colours
 matching_colours_dataset = pd.read_csv('matching_colours.csv', header=None)
-matching_colours_list = matching_colours_dataset.values.tolist()
+matching_colours_list = matching_colours_dataset.to_numpy()
 st.text('testing: ' + (matching_colours_list))
 
 #st.text('testing: ' + matching_colours_list[0])
