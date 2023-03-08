@@ -21,9 +21,7 @@ matching_colours_dataset = pd.read_csv('matching_colours.csv', header=None)
 matching_colours_list = matching_colours_dataset.to_numpy()
 st.text('testing: ' + str(matching_colours_list[:,1:]))
 if ('red' in matching_colours_list):
-	st.text('yes: ' + str(matching_colours_list[:,1:]))
-else if ():
-	st.text('testing: ' + str(matching_colours_listindex('red')))
+	st.text('yes: ' + str(matching_colours_list.index('red')))
 
 #st.text('testing: ' + matching_colours_list[0])
 matching_colours = ''
