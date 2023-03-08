@@ -20,7 +20,7 @@ if st.button('Balloons?'):
 matching_colours_dataset = pd.read_csv('matching_colours.csv', header=None)
 matching_colours_list = matching_colours_dataset.to_numpy()
 st.text('testing: ' + str(matching_colours_list[:,1:]))
-if ('red' in matching_colours_list):
+if ('green' in matching_colours_list):
 	st.text('yes: ' + str(matching_colours_list[np.where(matching_colours_list == 'red')[0],1:]))
 	st.text('yes: ' + str(np.where(matching_colours_list == 'red')[0]))
 
