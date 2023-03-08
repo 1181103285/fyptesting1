@@ -22,8 +22,9 @@ matching_colours_list = matching_colours_dataset.to_numpy()
 st.text('testing: ' + str(matching_colours_list[:,1:]))
 find = 'purple'
 if (find in matching_colours_list):
-	st.text('yes: ' + str(matching_colours_list[np.where(matching_colours_list == find)[0],1:]))
-	st.text('yes: ' + str(np.where(matching_colours_list == find)[0]))
+	st.text('colours that matches ' + find + ':')
+	st.text('classic match: ' + str(matching_colours_list[0,1:]))
+	st.text('complement match: ' + str(matching_colours_list[np.where(matching_colours_list == find)[0],1:]))
 
 #st.text('testing: ' + matching_colours_list[0])
 matching_colours = ''
