@@ -1,4 +1,4 @@
-black,white
-red,green
-yellow,purple
-blue,orange
+basic,black,white
+complement,red,green
+complement,yellow,purple
+complement,blue,orange
