@@ -16,22 +16,6 @@ if st.button('Balloons?'):
 
 #cap.release()
 
-## for matching colours
-matching_colours_dataset = pd.read_csv('matching_colours.csv', header=None)
-matching_colours_list = matching_colours_dataset.to_numpy()
-st.text('testing: ' + str(matching_colours_list[:,1:]))
-find = 'purple'
-if (find in matching_colours_list):
-	st.text('colours that matches ' + find + ':')
-	st.text('classic match: ' + str(matching_colours_list[0,1:]))
-	st.text('complement match: ' + str(matching_colours_list[np.where(matching_colours_list == find)[0],1:]))
-
-#st.text('testing: ' + matching_colours_list[0])
-matching_colours = ''
-#if ():
-#	matching_colours.append(matching_colours_dataset[0])
-
-
 bytes_data = None
 img_file_buffer = st.camera_input('Snap a picture')
 if img_file_buffer is not None:
@@ -66,12 +50,20 @@ HSVvalue = str(h) + ',' + str(s) + ',' + str(v)
 colour_prediction = knn.predict([[h,s,v]])
 
 ## for matching colours
-matching_colours_dataset = pd.read_csv('matching_colours.csv', header=None)
-matching_colours_list = matching_colours_dataset.to_numpy()
-st.text('testing: ' + matching_colours_list[0][0] + matching_colours_list[0][1])
+matching_colours_dataset = pd.read_csv('matching_colours.csv')
+matching_colours_list = matching_colours_dataset['complement'].dropna()
+matching_colours_list = matching_colours_list.values.tolist()
+find = 'purple'
+a = -1
+        
+for colours in matching_colours_list:
+    if find in colours:
+        a = matching_colours_list.index(colours)
 
-#st.text('testing: ' + matching_colours_list[0])
-matching_colours = ''
+st.text('colours that matches ' + find + ':')
+st.text('classic match: ' + ' & '.join(matching_colours_dataset['basic'].values.tolist()))
+st.text('complement match: ' + matching_colours_list[a])
+
 #if ():
 #	matching_colours.append(matching_colours_dataset[0])
 
