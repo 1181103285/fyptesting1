@@ -57,16 +57,14 @@ find = 'purple'
 a = -1
         
 for colours in matching_colours_list:
-    if find in colours:
+    if colour_prediction[0] in colours:
         a = matching_colours_list.index(colours)
-
-st.text('colours that matches ' + find + ':')
-st.text('classic match: ' + ' & '.join(matching_colours_dataset['basic'].values.tolist()))
-st.text('complement match: ' + matching_colours_list[a])
 
 #if ():
 #	matching_colours.append(matching_colours_dataset[0])
 
 st.text('hsv value: ' + HSVvalue)
 st.text('colour name: ' + colour_prediction[0])
-st.text('Suggested matching colour: ' + colour_prediction[0])
+st.text('Suggested matching colour for ' + colour_prediction[0] + ':')
+st.text('classic match: ' + ' & '.join(matching_colours_dataset['basic'].values.tolist()))
+st.text('complement match: ' + matching_colours_list[a])
