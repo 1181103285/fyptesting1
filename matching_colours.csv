@@ -1,4 +1,5 @@
-basic,black,white,beige
-complement,red,green
-complement,yellow,purple
-complement,blue,orange
+basic,complement
+black,red & green
+white,yellow & purple
+beige,blue & orange
+khaki
