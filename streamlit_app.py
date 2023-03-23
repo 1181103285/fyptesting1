@@ -33,7 +33,9 @@ st.text(f'({img.shape[1]}x{img.shape[0]})')
 st.header('colour detected')
 
 ##
-cv2.imwrite('ImageCaptured.jpg', img)
+img_array = np.array(img)
+#cv2.imwrite('out.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
+cv2.imwrite('ImageCaptured.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
 value = streamlit_image_coordinates('captured_image.jpg', key="local",)
 st.write(value)
 ##
