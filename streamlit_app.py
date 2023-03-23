@@ -43,9 +43,9 @@ hsv = HSVImg[value['x'], value['y']]
 #hsv = HSVImg[0, 0]
 
 HSVvalue = ''
-h = int(hsv[0])
-s = int(hsv[1]) / 255
-v = int(hsv[2]) / 255
+h = int(hsv[0]) / 180 * 360
+s = int(hsv[1]) / 255 * 100
+v = int(hsv[2]) / 255 *100
 HSVvalue = str(h) + ',' + str(s) + ',' + str(v)
 
 
