@@ -38,8 +38,8 @@ st.header('colour detected')
 cv2.imwrite('ImageCaptured.jpg', img)
 value = streamlit_image_coordinates('ImageCaptured.jpg', key="local",)
 st.write(value)
-value = streamlit_image_coordinates('captured_image.jpg', key="local",)
-st.write(value)
+#value = streamlit_image_coordinates('captured_image.jpg', key="local",)
+#st.write(value)
 ##
 
 HSVImg = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
