@@ -33,17 +33,14 @@ st.text(f'({img.shape[1]}x{img.shape[0]})')
 st.header('colour detected')
 
 ##
-#img_array = np.array(img)
-#cv2.imwrite('out.jpg', cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR))
 cv2.imwrite('ImageCaptured.jpg', img)
 value = streamlit_image_coordinates('ImageCaptured.jpg', key="local",)
 st.write(value)
-#value = streamlit_image_coordinates('captured_image.jpg', key="local",)
-#st.write(value)
 ##
 
 HSVImg = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-hsv = HSVImg[0, 0]
+hsv = HSVImg[value['x'], value['y']]
+#hsv = HSVImg[0, 0]
 
 HSVvalue = ''
 h = int(hsv[0])
