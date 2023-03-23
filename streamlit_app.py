@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from streamlit_image_coordinates import streamlit_image_coordinates
 
 st.header('Color Recognition App 🌎')
 if st.button('Balloons?'):
@@ -29,6 +30,12 @@ if bytes_data is None:
 img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 st.text(f'({img.shape[1]}x{img.shape[0]})')
 st.header('colour detected')
+
+##
+cv2.imwrite('ImageCaptured.jpg', img)
+value = streamlit_image_coordinates('ImageCaptured.jpg', key="local",)
+st.write(value)
+##
 
 HSVImg = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 hsv = HSVImg[0, 0]
