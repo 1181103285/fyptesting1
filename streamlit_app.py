@@ -95,6 +95,6 @@ for colours in matching_colours_list:
 st.text('hsv value: ' + HSVvalue)
 #st.text('colour name: ' + colour_prediction[0])
 st.text('colour name2: ' + Colour_name)
-st.text('Suggested matching colour for ' + colour_prediction[0] + ':')
+st.text('Suggested matching colour for ' + Colour_name + ':')
 st.text('classic match: ' + ' & '.join(matching_colours_dataset['basic'].values.tolist()))
 st.text('complement match: ' + matching_colours_list[a])
