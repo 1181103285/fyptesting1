@@ -6,7 +6,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from streamlit_image_coordinates import streamlit_image_coordinates
-st.code("pip install streamlit-image-coordinates")
 
 
 st.header('Color Recognition App 🌎')
