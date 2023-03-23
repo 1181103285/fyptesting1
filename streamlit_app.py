@@ -75,7 +75,7 @@ else:
 	Colour_name = "%s %s %s" %(Saturation_name, Lightness_name, Hue_name)
 
 ####
-colour_prediction = knn.predict([[h,s,v]])
+#colour_prediction = knn.predict([[h,s,v]])
 
 ## for matching colours
 matching_colours_dataset = pd.read_csv('matching_colours.csv')
@@ -85,14 +85,15 @@ find = 'purple'
 a = -1
         
 for colours in matching_colours_list:
-    if colour_prediction[0] in colours:
+    #if colour_prediction[0] in colours:
+	if Colour_name in colours:
         a = matching_colours_list.index(colours)
 
 #if ():
 #	matching_colours.append(matching_colours_dataset[0])
 
 st.text('hsv value: ' + HSVvalue)
-st.text('colour name: ' + colour_prediction[0])
+#st.text('colour name: ' + colour_prediction[0])
 st.text('colour name2: ' + Colour_name)
 st.text('Suggested matching colour for ' + colour_prediction[0] + ':')
 st.text('classic match: ' + ' & '.join(matching_colours_dataset['basic'].values.tolist()))
