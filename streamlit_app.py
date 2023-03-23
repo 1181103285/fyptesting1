@@ -33,8 +33,8 @@ st.text(f'({img.shape[1]}x{img.shape[0]})')
 st.header('colour detected')
 
 ##
-cv2.imwrite('ImageCaptured.jpg', img)
-value = streamlit_image_coordinates('ImageCaptured.jpg', key="local",)
+#cv2.imwrite('ImageCaptured.jpg', img)
+value = streamlit_image_coordinates('captured_image.jpg', key="local",)
 st.write(value)
 ##
 
