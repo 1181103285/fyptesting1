@@ -39,7 +39,7 @@ st.write(value)
 ##
 
 HSVImg = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-hsv = HSVImg[value['x'], value['y']]
+hsv = HSVImg[value['y'], value['x']]
 #hsv = HSVImg[0, 0]
 
 HSVvalue = ''
