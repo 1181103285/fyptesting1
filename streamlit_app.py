@@ -15,15 +15,11 @@ st.header('Color Recognition App 🌎')
 
 bytes_data = None
 img_file_buffer = st.camera_input('Snap a picture')
+uploaded_file = st.file_uploader("Choose a file")
 if img_file_buffer is not None:
 	bytes_data = img_file_buffer.getvalue()
-	
-if bytes_data is None:
-	st.stop()
 
-#####
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
+else if uploaded_file is not None:
     # To read file as bytes:
     bytes_data = uploaded_file.getvalue()
     st.write(bytes_data)
@@ -39,7 +35,10 @@ if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
-######
+if bytes_data is None:
+	st.stop()
+
+
 dataset = pd.read_csv('color_names.csv')
 X = dataset.drop('colour', axis=1)
 y = dataset['colour']
