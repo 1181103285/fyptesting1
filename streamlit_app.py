@@ -15,26 +15,14 @@ st.header('Color Recognition App 🌎')
 
 bytes_data = None
 img_file_buffer = st.camera_input('Snap a picture')
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Choose a file", type=["png", "jpg", "jpeg"])
 if img_file_buffer is not None:
 	bytes_data = img_file_buffer.getvalue()
 
 elif uploaded_file is not None:
-    # To read file as bytes:
-    bytes_data = uploaded_file.getvalue()
-    st.write(bytes_data)
+	bytes_data = uploaded_file.getvalue()
+	st.write(bytes_data)
 
-    # To convert to a string based IO:
-    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-    st.write(stringio)
-
-    # To read file as string:
-    string_data = stringio.read()
-    st.write(string_data)
-
-    # Can be used wherever a "file-like" object is accepted:
-    dataframe = pd.read_csv(uploaded_file)
-    st.write(dataframe)
 if bytes_data is None:
 	st.stop()
 
