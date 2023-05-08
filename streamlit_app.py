@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from streamlit_image_coordinates import streamlit_image_coordinates
+from io import StringIO
 
 
 st.header('Color Recognition App 🌎')
@@ -20,6 +21,25 @@ if img_file_buffer is not None:
 if bytes_data is None:
 	st.stop()
 
+#####
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+    # To read file as bytes:
+    bytes_data = uploaded_file.getvalue()
+    st.write(bytes_data)
+
+    # To convert to a string based IO:
+    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+    st.write(stringio)
+
+    # To read file as string:
+    string_data = stringio.read()
+    st.write(string_data)
+
+    # Can be used wherever a "file-like" object is accepted:
+    dataframe = pd.read_csv(uploaded_file)
+    st.write(dataframe)
+######
 dataset = pd.read_csv('color_names.csv')
 X = dataset.drop('colour', axis=1)
 y = dataset['colour']
