@@ -21,7 +21,6 @@ if img_file_buffer is not None:
 
 elif uploaded_file is not None:
 	bytes_data = uploaded_file.getvalue()
-	st.write(bytes_data)
 
 if bytes_data is None:
 	st.stop()
