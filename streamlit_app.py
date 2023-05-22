@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn import svm
 from streamlit_image_coordinates import streamlit_image_coordinates
 from io import StringIO
 
@@ -33,6 +34,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 knn = KNeighborsClassifier(n_neighbors=1)
 knn.fit(X_train, y_train)
 
+###*********************************************************************************************************************************************************
+clf = svm.SVC(kernel='linear', gamma='auto') #linear kernel
+clf.fit(X_train, y_train)
+###*********************************************************************************************************************************************************
 
 img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 st.text(f'({img.shape[1]}x{img.shape[0]})')
@@ -53,6 +58,8 @@ v = int(hsv[2]) / 255 *100
 HSVvalue = str(h) + ',' + str(s) + ',' + str(v)
 
 colour_prediction = knn.predict([[h,s,v]])
+###*********************************************************************************************************************************************************
+colour_prediction2 = clf.predict([[h,s,v]])
 
 ## for matching colours
 matching_colours_dataset = pd.read_csv('matching_colours.csv')
@@ -71,6 +78,7 @@ for colours in matching_colours_list:
 
 st.text('hsv value: ' + HSVvalue)
 st.text('colour name: ' + colour_prediction[0])
+st.text('colour name for svm: ' + colour_prediction2[0])
 #st.text('colour name2: ' + Colour_name)
 st.text('Suggested matching colour for ' + colour_prediction[0] + ':')
 st.text('classic match: ' + ' & '.join(matching_colours_dataset['basic'].values.tolist()))
