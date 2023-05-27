@@ -3,14 +3,14 @@ import cv2
 import numpy as np
 
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn import svm
+#from sklearn.model_selection import train_test_split
+#from sklearn.neighbors import KNeighborsClassifier
+#from sklearn import svm
 from streamlit_image_coordinates import streamlit_image_coordinates
 from io import StringIO
 
 
-st.header('Color Recognition App 🌎')
+st.header('Color Recognition App 👕👖👗🛍')
 #if st.button('Balloons?'):
 #    st.balloons()
 
@@ -27,16 +27,18 @@ if bytes_data is None:
 	st.stop()
 
 
-dataset = pd.read_csv('color_names.csv')
-X = dataset.drop('colour', axis=1)
-y = dataset['colour']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=7)
-knn = KNeighborsClassifier(n_neighbors=1)
-knn.fit(X_train, y_train)
+#dataset = pd.read_csv('color_names.csv')
+#X = dataset.drop('colour', axis=1)
+#y = dataset['colour']
+#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=7)
+#knn = KNeighborsClassifier(n_neighbors=1)
+#knn.fit(X_train, y_train)
+knn = joblib.load('model.pkl')
 
 ###*********************************************************************************************************************************************************
-clf = svm.SVC(kernel='linear', gamma='auto') #linear kernel
-clf.fit(X_train, y_train)
+#clf = svm.SVC(kernel='linear', gamma='auto') #linear kernel
+#clf.fit(X_train, y_train)
+clf = joblib.load('model.pkl')
 ###*********************************************************************************************************************************************************
 
 img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
