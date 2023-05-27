@@ -17,7 +17,7 @@ st.header('Color Recognition App 👕👖👗🛍')
 
 bytes_data = None
 img_file_buffer = st.camera_input('Snap a picture')
-uploaded_file = st.file_uploader("Choose a file", type=["png", "jpg", "jpeg"])
+uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 if img_file_buffer is not None:
 	bytes_data = img_file_buffer.getvalue()
 
