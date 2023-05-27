@@ -53,7 +53,7 @@ st.write(value)
 
 HSVImg = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 st.write(value['y'])
-if(value['y'] is None or value['x'] is None):
+if(value is None):
 	hsv = HSVImg[0, 0]
 else:
 	hsv = HSVImg[value['y'], value['x']]
