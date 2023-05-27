@@ -53,7 +53,7 @@ value = streamlit_image_coordinates('ImageCaptured.jpg', key="local",)
 
 HSVImg = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-if(value['y'] == null or value['x'] == null):
+if(value['y'] is null or value['x'] is null):
 	hsv = HSVImg[0, 0]
 else:
 	hsv = HSVImg[value['y'], value['x']]
