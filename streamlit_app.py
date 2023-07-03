@@ -41,7 +41,7 @@ with c1_sidebar:
 		unsafe_allow_html=True)
 with c2_sidebar:
 	st.write('\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
-	st.image("images/about.png", width=25)
+	#st.image("images/about.png", width=25)
 	
 
 st.sidebar.markdown("[basic guide on pairing outfits](https://www.stylecraze.com/articles/how-to-match-the-colors-of-your-clothes/)")
@@ -62,7 +62,7 @@ with c1_header:
 	)
 with c2_header:
 	st.write('\n\n\n')
-	st.image("images/header_shirt.png")
+	#st.image("images/header_shirt.png")
 #st.header('Color Recognition App 👕👖👗🛍')
 #if st.button('Balloons?'):
 #    st.balloons()
