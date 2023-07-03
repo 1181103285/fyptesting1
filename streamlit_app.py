@@ -169,12 +169,12 @@ if st.session_state['HSV_value_text'] is None:
 else:
 	text = 'Colour name: <span style=\'background-color: whitesmoke;\'><strong> ' + st.session_state['colour_name_text'] + '</strong></span><br>' +\
 		'Suggested matching colours for ' + st.session_state['colour_name_text'] + ':<br>'
-# Display st.text elements using stored state
-for index, row in st.session_state['suggestions_text'].iterrows():
-	colors = row['Color Combination'].split(' and ')
-	other_color = [color for color in colors if color != st.session_state['colour_name_text']][0]
-	category = row['Category']
-	text += f" with <span style='background-color: whitesmoke;'><strong>{other_color}</strong></span>: {category}<br>"
+	# Display st.text elements using stored state
+	for index, row in st.session_state['suggestions_text'].iterrows():
+		colors = row['Color Combination'].split(' and ')
+		other_color = [color for color in colors if color != st.session_state['colour_name_text']][0]
+		category = row['Category']
+		text += f" with <span style='background-color: whitesmoke;'><strong>{other_color}</strong></span>: {category}<br>"
 	
 with c2:	
 	st.markdown(
