@@ -164,9 +164,10 @@ with c1:
 				st.session_state['suggestions_text'] = suggestions if value is not None else ''
 				st.experimental_rerun()
 
-
-text = 'HSV value: ' + st.session_state['HSV_value_text'] + '<br>' +\
-		'Colour name: <span style=\'background-color: whitesmoke;\'><strong> ' + st.session_state['colour_name_text'] + '</strong></span><br>' +\
+if st.session_state['HSV_value_text'] is None:
+	text = 'Click on the image to know the color !'
+else:
+	text = 'Colour name: <span style=\'background-color: whitesmoke;\'><strong> ' + st.session_state['colour_name_text'] + '</strong></span><br>' +\
 		'Suggested matching colours for ' + st.session_state['colour_name_text'] + ':<br>'
 # Display st.text elements using stored state
 for index, row in st.session_state['suggestions_text'].iterrows():
