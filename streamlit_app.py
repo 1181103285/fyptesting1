@@ -165,7 +165,7 @@ with c1:
 				st.experimental_rerun()
 
 if st.session_state['HSV_value_text'] is None:
-	text = 'Click on the image to know the color !'
+	text = 'Select any point on the image to know its color !'
 else:
 	text = 'Colour name: <span style=\'background-color: whitesmoke;\'><strong> ' + st.session_state['colour_name_text'] + '</strong></span><br>' +\
 		'Suggested matching colours for ' + st.session_state['colour_name_text'] + ':<br>'
