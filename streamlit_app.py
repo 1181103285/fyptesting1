@@ -11,9 +11,9 @@ from PIL import Image, ImageDraw
 
 #https://docs.streamlit.io/library/api-reference/utilities/st.set_page_config
 st.set_page_config(
-    page_title="Ex-stream-ly Cool App",
-    page_icon="🧊",
-    layout="wide",
+    page_title="Color Recognition",
+    page_icon="🥼",
+    layout="centered",
     initial_sidebar_state="expanded",
     menu_items={
         'Get Help': 'https://www.extremelycoolapp.com/help',
@@ -86,10 +86,20 @@ knn = joblib.load('model.pkl')
 ###*********************************************************************************************************************************************************
 
 img1 = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
-st.text(f'({img1.shape[1]}x{img1.shape[0]})')
+#st.text(f'({img1.shape[1]}x{img1.shape[0]})')
 #st.header('colour detected')
+# st.markdown(
+    # "<h1 style='text-align: center; font-family: Courier, sans-serif;'>Colour Detected</h1> <p>Interact with the image to find your desire colour!</p>",
+    # unsafe_allow_html=True
+# )
+
 st.markdown(
-    "<h1 style='text-align: center; font-family: Courier, sans-serif;'>colour detected</h1>",
+    """
+    <div style='text-align: center; font-family: Courier, sans-serif;'>
+        <h1>Colour Detected</h1>
+        <p>Interact with the image to find your desired colour!</p>
+    </div>
+    """,
     unsafe_allow_html=True
 )
 
@@ -113,9 +123,8 @@ if "point" not in st.session_state:
 c1, c2 = st.columns(2)
 with c1:
 	with Image.open("ImageCaptured.jpg") as img:
-		img.thumbnail((256, 256)) # Resize the image while maintaining the aspect ratio
+		img.thumbnail((400, 400)) # Resize the image while maintaining the aspect ratio
 		draw = ImageDraw.Draw(img)
-		#draw.rectangle([(0, 0), img.size], fill=(255, 255, 255, 0)) #clear image
 
 		if st.session_state["point"] is not None:
 			coords = get_ellipse_coords(st.session_state["point"])
@@ -143,7 +152,7 @@ with c1:
 				colour_prediction = knn.predict([[h,s,v]])
 
 				## for matching colours
-				matching_colours_dataset = pd.read_csv('matching_colours.csv')
+				matching_colours_dataset = pd.read_csv('suggestions.csv')
 
 				# Search for combinations that contain the detected color
 				suggestions = matching_colours_dataset[matching_colours_dataset['Color Combination'].str.contains(colour_prediction[0], case=False)]
@@ -164,19 +173,11 @@ for index, row in st.session_state['suggestions_text'].iterrows():
 	colors = row['Color Combination'].split(' and ')
 	other_color = [color for color in colors if color != st.session_state['colour_name_text']][0]
 	category = row['Category']
-	#st.text(f" with {other_color}: {category}")
 	text += f" with <span style='background-color: whitesmoke;'><strong>{other_color}</strong></span>: {category}<br>"
 	
 with c2:	
 	st.markdown(
-        f"<div style='font-family: Courier, sans-serif; text-align: left; background-color: #AEC6CF; width: 450px; height: 400px;'>{text}</div>",
+        f"<div style='font-family: Comic Sans MS, sans-serif; text-align: left; background-color: #AEC6CF; height: 400px; padding: 20px;'>{text}</div>",
         unsafe_allow_html=True
     )
-	st.text_area('', ''' Please note that the color suggestions provided are based on general associations and 
-	recommendations. However, it's important to consider that the shades or brightness of the colors can 
-	significantly impact the overall appearance of an outfit. Bright or vibrant shades tend to create a bold 
-	and energetic look, while pale or pastel shades can evoke a softer and more delicate feel. Additionally, 
-	darker shades often convey a sense of sophistication and formality, while lighter shades can give a more 
-	casual and relaxed vibe. Remember to take into account the shades or brightness of the colors when selecting 
-	your outfit, as it can greatly influence the desired style and mood. Enjoy experimenting with different color
-	combinations and embrace your unique sense of fashion!''')
+st.text_area('', ''' Please note that the color suggestions provided are based on general associations and recommendations. The appearance of an outfit is influenced by multiple elements, including lighting conditions, personal preferences, and individual perception. Additionally, keep in mind that the shades and brightness of colors can greatly affect the overall look and feel of an outfit. We recommend considering these factors and experimenting with different combinations to find the perfect match for your style. Please do seek help or advice from the people around you for more accurate result!''')
